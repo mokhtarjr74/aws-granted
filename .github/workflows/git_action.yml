@@ -27,9 +27,12 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Login to Amazon ECR
+      
+        # write a job to give docker access to AWS ECR
+      - name: Configure Docker Environment
         run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin https://${ECR_REPOSITORY}
+          mkdir -p ~/.docker
+          echo '{"credsStore":"ecr-login"}' > ~/.docker/config.json
 
       - name: Build and Push Docker image to ECR
         run: |
