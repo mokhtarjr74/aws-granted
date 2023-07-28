@@ -26,6 +26,11 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+      
+      - name: Configure Docker Environment
+        run: |
+          mkdir -p ~/.docker
+          echo '{"credsStore":"ecr-login"}' > ~/.docker/config.json
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
@@ -33,8 +38,7 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           IMAGE_TAG: latest
         run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REPOSITORY }}
           docker build -t $ECR_REPOSITORY:latest .
-          docker tag $ECR_REPOSITORY:latest $ECR_REPOSITORY:latest
-          docker push $ECR_REPOSITORY:latest
-          echo "::set-output name=image::$ECR_REPOSITORY:latest"
+          docker tag $ECR_REPOSITORY:latest $ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REPOSITORY:$IMAGE_TAG"
