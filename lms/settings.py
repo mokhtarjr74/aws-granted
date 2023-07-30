@@ -73,12 +73,15 @@ WSGI_APPLICATION = 'lms.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+# configure to use aws rds
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'my-rds-instance',
+        'USER': 'test',
+        'PASSWORD': 'test1234',
+        'HOST': 'my-rds-instance.cdbjzpigh4vp.eu-central-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
