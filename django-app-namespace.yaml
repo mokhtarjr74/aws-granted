@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: django-app
-  labels:
-    name: django-app
-    namespace: django-app
-    fluxcd.io/ignore: "false"
-    fluxcd.io/automated: "true"

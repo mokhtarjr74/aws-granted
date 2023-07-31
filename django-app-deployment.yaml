@@ -3,10 +3,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: django-app
-  namespace: django-app
+  namespace: flux-system
   labels:
     name: django-app
-    namespace: django-app
+    namespace: flux-system
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
 spec:
