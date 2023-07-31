@@ -1,0 +1,26 @@
+# create deployment for django app using yaml file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+  namespace: django-app
+  labels:
+    name: django-app
+    namespace: django-app
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: django-app
+  template:
+    metadata:
+      labels:
+        name: django-app
+    spec:
+      containers:
+        - name: my-django-app
+          image: 732192326228.dkr.ecr.eu-central-1.amazonaws.com/ecr_repo:latest
+          ports:
+            - containerPort: 8000

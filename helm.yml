@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: nginx
-  namespace: default
+  namespace: nginx-ingress
 spec:
   interval: 1m
   url: https://helm.nginx.com/stable
