@@ -22,3 +22,12 @@ spec:
           env:
             - name: DATABASE_HOST
               value: my-rds-instance.cdbjzpigh4vp.eu-central-1.rds.amazonaws.com
+            - name: DATABASE_NAME
+              value: my-rds-instance
+            - name: DATABASE_USER
+              value: test
+            - name: DATABASE_PASSWORD
+              value: test1234
+            - name: DATABASE_PORT
+              value: "5432"
+              
