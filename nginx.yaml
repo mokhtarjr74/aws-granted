@@ -1,0 +1,17 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: django-app
+  annotations:
+    fluxcd.io/ignore: "false"
+spec:
+  releaseName: nginx-ingress
+  chart:
+    repository: https://github.com/nginxinc/helm-charts.git
+    name: nginx-ingress
+    version: 
+  values:
+    controller:
+      service:
+        type: LoadBalancer
