@@ -1,1 +1,1 @@
-web: gunicorn blog_corey.wsgi
+web: gunicorn crm.wsgi --log-file -
