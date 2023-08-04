@@ -9,6 +9,10 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 8000
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 8000
   selector:
     app: django-app
   type: ClusterIP
