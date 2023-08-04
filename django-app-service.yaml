@@ -4,15 +4,10 @@ metadata:
   name: django-app
   namespace: django-app
 spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8000
-  - name: https
-    port: 443
-    protocol: TCP
-    targetPort: 8000
+  type: LoadBalancer
   selector:
     app: django-app
-  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
