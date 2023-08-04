@@ -15,4 +15,3 @@ spec:
   timeout: 5m
   releaseName: nginx-ingress-controller
   targetNamespace: django-app
-  sourceRefNamespace: flux-system
