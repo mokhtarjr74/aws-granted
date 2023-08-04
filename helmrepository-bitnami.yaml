@@ -1,8 +1,8 @@
-apiVersion: helm.fluxcd.io/v1
+apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: nginx-stable
-  namespace: nginx-ingress
+  name: bitnami
+  namespace: flux-system
 spec:
-  url: https://helm.nginx.com/stable
-  interval: 5m
+  interval: 15m
+  url: https://charts.bitnami.com/bitnami

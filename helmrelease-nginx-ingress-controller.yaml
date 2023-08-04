@@ -1,15 +1,17 @@
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: nginx-ingress-controller
   namespace: django-app
 spec:
-  releaseName: nginx-ingress-controller
   chart:
-    repository: nginx-stable
-    name: nginx-ingress
-    version: 1.41.3
-  values:
-    controller:
-      service:
-        type: LoadBalancer
+    spec:
+      chart: nginx-ingress-controller
+      version: 9.x
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  interval: 15m
+  timeout: 5m
+  releaseName: nginx-ingress-controller
