@@ -23,10 +23,6 @@ spec:
       use-forwarded-headers: "true"
   defaultBackend:
     enabled: true
-  rbac:
-    create: true
-  metrics:
-    enabled: true
   admissionWebhooks:
     enabled: true
   tcp:
