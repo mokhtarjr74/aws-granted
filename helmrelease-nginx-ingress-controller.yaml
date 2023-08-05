@@ -17,6 +17,17 @@ spec:
   targetNamespace: django-app
   values:
   controller:
-      service:
-        type: LoadBalancer
-        
+    service:
+      externalTrafficPolicy: "Local"
+    config:
+      use-forwarded-headers: "true"
+  defaultBackend:
+    enabled: true
+  rbac:
+    create: true
+  metrics:
+    enabled: true
+  admissionWebhooks:
+    enabled: true
+  tcp:
+    "8080": "django-app:8000"
