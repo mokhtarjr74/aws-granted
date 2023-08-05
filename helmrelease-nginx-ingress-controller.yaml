@@ -15,3 +15,8 @@ spec:
   timeout: 5m
   releaseName: nginx-ingress-controller
   targetNamespace: django-app
+  values:
+  controller:
+      service:
+        type: LoadBalancer
+        
